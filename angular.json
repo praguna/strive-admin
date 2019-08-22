@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "strive-admin": {
+    "strive": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,20 +17,24 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/strive-admin",
+            "outputPath": "dist/strive",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+               "node_modules/jquery/dist/jquery.min.js",
+               "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              
+            ]
           },
           "configurations": {
             "production": {
@@ -67,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "strive-admin:build"
+            "browserTarget": "strive:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "strive-admin:build:production"
+              "browserTarget": "strive:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "strive-admin:build"
+            "browserTarget": "strive:build"
           }
         },
         "test": {
@@ -115,15 +119,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "strive-admin:serve"
+            "devServerTarget": "strive:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "strive-admin:serve:production"
+              "devServerTarget": "strive:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "strive-admin"
+  "defaultProject": "strive"
 }
