@@ -1,0 +1,84 @@
+<app-topbar></app-topbar>
+<div class="container">
+
+    <button style="margin-bottom: 10px" (click)="removeProblem()" [disabled]="isDeleted"  [hidden]="id=='edit_new'"  class="btn btn-danger">&#x2716;&nbsp;Delete</button>   
+    <button style="float:right;margin-bottom: 10px" [routerLink]="['/problems']" class="btn btn-primary btn-sm">&#x2190;&nbsp;Back to Problems</button>    
+    <form #dataForm="ngForm" (ngSubmit)="onSubmit(dataForm)" >
+                <div class="form-group">
+                 <div class="section"> 
+                  <br><label for="name">Name</label>
+                  <input   [disabled]="id!='edit_new'"  [(ngModel)]="problem.name" type="text" placeholder="Problem Name" class="form-control" id="name" name="name"
+                         required   #name="ngModel"/>
+                         <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Name is required</div>       
+                </div>    
+                <br>      
+                <div class="section"> 
+                <br>
+                <label for="problem.author">Author</label>
+                 <input type="text" class="form-control" id="author"
+                                [(ngModel)]="problem.author"
+                                required
+                                placeholder="Enter the your name"
+                                name="author" #author="ngModel">   
+                                <div [hidden]="author.valid || author.pristine" class="alert alert-danger">Author is required</div>  
+                    </div>
+                    
+                <br>       
+                 <div class="section">   
+                <br> <label for="tag">Tag Name</label>
+                 <select class="form-control" id="tag" [(ngModel)]="problem.tag"  name="tag" #tag="ngModel" required>
+                        <option *ngFor="let tag of tags" [value]="tag.value" >{{tag.display}}</option>
+                </select>
+                <div [hidden]="tag.valid || tag.pristine" class="alert alert-danger">Tag is required</div>  
+                </div>
+                <br>
+                <div class="section">   
+                                <br> <label for="difficulty">Difficulty</label>
+                                 <select class="form-control" id="difficulty" [(ngModel)]="problem.difficulty"  name="difficulty" #difficulty="ngModel" required>
+                                        <option *ngFor="let level of levels" [value]="level.value" >{{level.display}}</option>
+                                </select>
+                                <div [hidden]="difficulty.valid || difficulty.pristine" class="alert alert-danger">Level is required</div>  
+                </div>
+                <br>   
+                <div class="section">
+                 <br><label for="company">Company</label>
+                 <input type="text" class="form-control" #company="ngModel" [(ngModel)]="problem.company"  placeholder="Enter Company's Name"  id="company" required
+                name="company">
+                <div [hidden]="company.valid || company.pristine" class="alert alert-danger">Company is required</div>  
+                 </div>
+                 <br>   
+                 <div class="section">
+                 <br><label for="background">Background</label>
+                 <textarea type="text" #background="ngModel" required class="form-control" [(ngModel)]="detail.background" id="background" name="background" rows=5 placeholder="Share your experience" ></textarea>
+                 <div [hidden]="background.valid || background.pristine" class="alert alert-danger">Background is required</div>   
+                </div>
+                 <br>   
+                 <div class="section">
+                 <br><label for="description">Description</label>
+                 <textarea type="text" #description="ngModel" required class="form-control" [(ngModel)]="detail.description" id="description"  name="description" rows=5 placeholder="Explain the problem statement in detail with a sample test case" ></textarea>   
+                 <div [hidden]="description.valid || description.pristine" class="alert alert-danger">Description is required</div>         
+                </div>
+                 <br>   
+                 <div class="section">
+                 <br><label for="solution">Solution</label>
+                 <textarea type="text"  #solution="ngModel" required class="form-control" [(ngModel)]="detail.solution" id="solution" name="solution" rows=10 placeholder="Explain your solution to the problem" ></textarea>   
+                 <div [hidden]="solution.valid || solution.pristine" class="alert alert-danger">Solution is required</div>  
+                </div>
+                <br>   
+                <div class="section">
+                 <br><label for="input">Input</label>
+                 <textarea type="text"  #input="ngModel" required class="form-control" [(ngModel)]="detail.input" id="input" name="input" rows=5 placeholder="Enter input test cases" ></textarea>   
+                 <div [hidden]="input.valid || input.pristine" class="alert alert-danger">Input is required</div>  
+                </div>
+                <br>   
+                <div class="section"> 
+                 <br><label for="output">Output</label>
+                 <textarea type="text"  #output="ngModel" required class="form-control" [(ngModel)]="detail.output" id="output" name="output" rows=5 placeholder="Enter corresponding output for the above input cases" ></textarea>   
+                 <div [hidden]="output.valid || output.pristine" class="alert alert-danger">Output is required</div>   
+                </div>
+                 <br>
+                 <button type="submit" class="btn btn-success" [disabled]="!dataForm.form.valid || isSubmitted">Submit&nbsp;<img [hidden]="!isSubmitted" height="10px" width="10px" src="../../assets/loader.gif"></button>
+                </div>
+        </form>        
+
+</div>

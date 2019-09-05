@@ -1,0 +1,47 @@
+<app-topbar></app-topbar>
+<div class="container-fluid">  
+    <button (click)="logout()" style="float: right" class="btn btn-danger btn-sm" id="logout">&#x27AA;&nbsp;logout</button>  
+<mat-form-field style="margin: 10px 10px 10px 10px">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search and Update Questions">
+  </mat-form-field>
+  <div [hidden]="data!=undefined" style="margin-left: 10vw">
+    <img height="60px" width="60px" src="../../assets/loader.gif"/>
+    <p>Loading Problems...</p>
+  </div>
+  <a style="float: right;" class="btn btn-primary btn-sm" [routerLink]="['/problems/edit_new']" style="color: white" role="button">&#x2795; new</a>
+  <div [hidden]="data==undefined" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> #ID </th>
+        <td mat-cell id="index" *matCellDef="let element; let i = index;">{{i+1}}</td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th class="name" mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td class="name" mat-cell *matCellDef="let row"><a [routerLink]="['/problems', row._id]">{{row.name}}</a></td>
+      </ng-container>
+  
+  
+      <!-- Tag Column -->
+      <ng-container matColumnDef="tag">
+        <th class="tag" mat-header-cell *matHeaderCellDef mat-sort-header> Tag </th>
+        <td class="tag" mat-cell *matCellDef="let row" [style.tag]="row.tag"> {{row.tag}} </td>
+      </ng-container>
+
+    <!-- Company Column -->
+    <ng-container matColumnDef="company">
+      <th class="tag" mat-header-cell *matHeaderCellDef mat-sort-header> Company </th>
+      <td class="tag" mat-cell *matCellDef="let row" [style.tag]="row.company"> {{row.company}} </td>
+    </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[10, 15, 30, 50,100]"></mat-paginator>
+  </div>
+</div>
