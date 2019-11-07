@@ -18,7 +18,7 @@ Email : strivebms@gmail.com  password : strivebmsproject
 ![login](images/login.png)
 
 #### Home Page to Search Problems
-[!home](images/home.png)
+![home](images/home.png)
 
 #### Edit / Update / Create new Questions 
-[!edit_problem](images/edit_problem_details.png)
+![edit_problem](images/edit_problem_details.png)
