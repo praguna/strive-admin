@@ -1,6 +1,7 @@
 # StriveAdmin
 
 This application is an interface to edit and add new questions to the platform
+run it using ng serve or npm start
 
 ### SnapShots
 

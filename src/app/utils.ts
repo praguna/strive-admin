@@ -1,4 +1,4 @@
-export let api:string ="http://ec2-35-172-129-162.compute-1.amazonaws.com:3000/api/";
+export let api:string ="https://sheltered-meadow-05731.herokuapp.com/api/";
 
 export interface ProblemData{
   name:string,
