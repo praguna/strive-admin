@@ -1,7 +1,7 @@
 # StriveAdmin
 
 This application is an interface to edit and add new questions to the platform
-run it using ng serve or npm start
+run it using ng serve
 
 ### SnapShots
 
@@ -13,3 +13,7 @@ run it using ng serve or npm start
 
 ### Edit / Update / Create new Questions 
 ![edit_problem](images/edit_problem_details.png)
+
+
+### Found at : 
+https://immense-hamlet-55100.herokuapp.com
